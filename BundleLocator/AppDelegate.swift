@@ -15,10 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         bundleLocator = BundleLocator()
-        
-        let shouldMove = try? bundleLocator?.shouldMoveBundleToApplications()
-        
-        if let shouldMove = shouldMove, shouldMove {
+                
+        if let shouldMove = try? bundleLocator?.shouldMoveBundleToApplications(), shouldMove {
             bundleLocator?.askToMoveBundle()
         } else {
             bundleLocator?.removeOriginalBundleIfNeeded()
